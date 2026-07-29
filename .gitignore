@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+
+# Environment & certs
+.env
+*.pem
+*.key

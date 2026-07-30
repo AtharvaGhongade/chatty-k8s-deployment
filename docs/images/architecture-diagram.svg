@@ -1,0 +1,81 @@
+<svg viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b6472"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="620" fill="#0f1115"/>
+
+  <!-- Title -->
+  <text x="500" y="42" text-anchor="middle" fill="#f4f4f5" font-size="24" font-weight="600">Chatty — Kubernetes Deployment Architecture</text>
+
+  <!-- Browser -->
+  <rect x="400" y="70" width="200" height="60" rx="10" fill="#1e2128" stroke="#3b4252" stroke-width="1.5"/>
+  <text x="500" y="94" text-anchor="middle" fill="#e5e7eb" font-size="15" font-weight="600">Browser</text>
+  <text x="500" y="114" text-anchor="middle" fill="#9ca3af" font-size="12">https://chat-app.com</text>
+
+  <line x1="500" y1="130" x2="500" y2="175" stroke="#5b6472" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Ingress -->
+  <rect x="350" y="180" width="300" height="70" rx="10" fill="#1a2e22" stroke="#2f8f4e" stroke-width="1.5"/>
+  <text x="500" y="207" text-anchor="middle" fill="#7ee2a0" font-size="15" font-weight="600">NGINX Ingress Controller</text>
+  <text x="500" y="227" text-anchor="middle" fill="#9ca3af" font-size="12">TLS termination (mkcert) · path routing</text>
+
+  <line x1="450" y1="250" x2="280" y2="300" stroke="#5b6472" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="550" y1="250" x2="720" y2="300" stroke="#5b6472" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="330" y="278" fill="#9ca3af" font-size="12">/</text>
+  <text x="665" y="278" fill="#9ca3af" font-size="12">/api</text>
+
+  <!-- Frontend Service -->
+  <rect x="130" y="305" width="220" height="65" rx="10" fill="#1e2128" stroke="#3b4252" stroke-width="1.5"/>
+  <text x="240" y="331" text-anchor="middle" fill="#e5e7eb" font-size="14" font-weight="600">Frontend Service</text>
+  <text x="240" y="350" text-anchor="middle" fill="#9ca3af" font-size="12">ClusterIP · port 80</text>
+
+  <!-- Backend Service -->
+  <rect x="650" y="305" width="220" height="65" rx="10" fill="#1e2128" stroke="#3b4252" stroke-width="1.5"/>
+  <text x="760" y="331" text-anchor="middle" fill="#e5e7eb" font-size="14" font-weight="600">Backend Service</text>
+  <text x="760" y="350" text-anchor="middle" fill="#9ca3af" font-size="12">ClusterIP · port 5001</text>
+
+  <line x1="240" y1="370" x2="240" y2="410" stroke="#5b6472" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="760" y1="370" x2="760" y2="410" stroke="#5b6472" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Frontend Pod -->
+  <rect x="130" y="415" width="220" height="70" rx="10" fill="#151a24" stroke="#2b3a55" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="240" y="443" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="600">Frontend Deployment</text>
+  <text x="240" y="463" text-anchor="middle" fill="#9ca3af" font-size="12">React (Vite) served via nginx</text>
+
+  <!-- Backend Pod -->
+  <rect x="650" y="415" width="220" height="70" rx="10" fill="#151a24" stroke="#2b3a55" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="760" y="443" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="600">Backend Deployment</text>
+  <text x="760" y="463" text-anchor="middle" fill="#9ca3af" font-size="12">Node.js · Express · Socket.io</text>
+
+  <line x1="760" y1="485" x2="760" y2="525" stroke="#5b6472" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- MongoDB Service -->
+  <rect x="650" y="530" width="220" height="60" rx="10" fill="#1e2128" stroke="#3b4252" stroke-width="1.5"/>
+  <text x="760" y="555" text-anchor="middle" fill="#e5e7eb" font-size="14" font-weight="600">MongoDB Service</text>
+  <text x="760" y="573" text-anchor="middle" fill="#9ca3af" font-size="12">ClusterIP · port 27017</text>
+
+  <!-- PVC to the side -->
+  <line x1="880" y1="560" x2="940" y2="560" stroke="#5b6472" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="945" y="510" width="0" height="0"/>
+  <rect x="945" y="530" width="50" height="60" rx="10" fill="#2a1e14" stroke="#8a5a2a" stroke-width="1.5"/>
+  <text x="970" y="555" text-anchor="middle" fill="#e8b57a" font-size="10" font-weight="600" transform="rotate(90 970 560)"></text>
+
+  <!-- Better: PVC as its own labeled box to the right -->
+  <rect x="900" y="415" width="90" height="175" rx="10" fill="#241a12" stroke="#8a5a2a" stroke-width="1.5"/>
+  <text x="945" y="500" text-anchor="middle" fill="#e8b57a" font-size="12" font-weight="600" writing-mode="vertical-rl">PersistentVolumeClaim</text>
+
+  <line x1="880" y1="500" x2="900" y2="500" stroke="#5b6472" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Secrets note -->
+  <rect x="50" y="530" width="220" height="60" rx="10" fill="#241222" stroke="#6b2a5e" stroke-width="1.5"/>
+  <text x="160" y="555" text-anchor="middle" fill="#e6a3d8" font-size="13" font-weight="600">chatapp-secrets</text>
+  <text x="160" y="573" text-anchor="middle" fill="#9ca3af" font-size="11">JWT signing key (K8s Secret)</text>
+  <line x1="270" y1="560" x2="650" y2="450" stroke="#6b2a5e" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrow)"/>
+
+  <!-- Namespace boundary -->
+  <rect x="100" y="290" width="810" height="315" rx="14" fill="none" stroke="#374151" stroke-width="1" stroke-dasharray="6 4"/>
+  <text x="120" y="310" fill="#6b7280" font-size="12" font-weight="600">namespace: chat-app</text>
+</svg>
